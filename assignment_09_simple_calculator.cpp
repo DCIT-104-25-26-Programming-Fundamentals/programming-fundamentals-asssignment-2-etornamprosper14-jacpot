@@ -73,3 +73,97 @@
 #include <cmath>
 using namespace std;
 
+// 1. Addition
+void addition(double a, double b) {
+    cout << "Result: " << a << " + " << b << " = " << (a + b) << endl;
+}
+
+// 2. Subtraction
+void subtraction(double a, double b) {
+    cout << "Result: " << a << " - " << b << " = " << (a - b) << endl;
+}
+
+// 3. Multiplication
+void multiplication(double a, double b) {
+    cout << "Result: " << a << " * " << b << " = " << (a * b) << endl;
+}
+
+// 4. Division
+void division(double a, double b) {
+    if (b == 0) {
+        cout << "Error: Cannot divide by zero." << endl;
+        return;
+    }
+    cout << "Result: " << a << " / " << b << " = " << (a / b) << endl;
+}
+
+// 5. Modulus
+void modulus(double a, double b) {
+    if (b == 0) {
+        cout << "Error: Cannot divide by zero." << endl;
+        return;
+    }
+    int result = (int)a % (int)b;
+    cout << "Result: " << (int)a << " % " << (int)b << " = " << result << " (remainder)" << endl;
+}
+
+// 6. Exponentiation
+void exponentiation(double a, double b) {
+    double result = pow(a, b);
+    cout << "Result: " << a << " ^ " << b << " = " << result << endl;
+}
+
+// Menu display
+void showMenu() {
+    cout << "\n===========================" << endl;
+    cout << "      SIMPLE CALCULATOR" << endl;
+    cout << "===========================" << endl;
+    cout << "1. Addition" << endl;
+    cout << "2. Subtraction" << endl;
+    cout << "3. Multiplication" << endl;
+    cout << "4. Division" << endl;
+    cout << "5. Modulus" << endl;
+    cout << "6. Exponentiation" << endl;
+    cout << "7. Quit" << endl;
+    cout << "Select an operation (1-7): ";
+}
+
+int main() {
+    cout << fixed << setprecision(2);
+
+    int choice;
+    bool running = true;
+
+    while (running) {
+        showMenu();
+        cin >> choice;
+
+        if (choice == 7) {
+            cout << "Goodbye!" << endl;
+            running = false;
+            continue;
+        }
+
+        if (choice < 1 || choice > 7) {
+            cout << "Error: please enter a number between 1 and 7." << endl;
+            continue;
+        }
+
+        double a, b;
+        cout << "Enter first number: ";
+        cin >> a;
+        cout << "Enter second number: ";
+        cin >> b;
+
+        switch (choice) {
+            case 1: addition(a, b); break;
+            case 2: subtraction(a, b); break;
+            case 3: multiplication(a, b); break;
+            case 4: division(a, b); break;
+            case 5: modulus(a, b); break;
+            case 6: exponentiation(a, b); break;
+        }
+    }
+
+    return 0;
+}
